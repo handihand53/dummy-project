@@ -1,0 +1,17 @@
+pipeline {
+    agent {
+        label "dockerworker"
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+    }
+    post {
+        always {
+            deleteDir()
+        }
+    }
+}
